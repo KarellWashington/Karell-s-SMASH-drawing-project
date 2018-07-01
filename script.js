@@ -1,38 +1,70 @@
+// Global Variables
 var p5Canvas;
 var myName;
+var pg;
+var a = 0.0;
+var s = 0.0;
+var mousePressed;
+var drawTriangle;
 
+// initialize global variables in setup() function
 function setup() {
   p5Canvas = createCanvas(800, 600);
+  pg = createGraphics(400, 250);
+  stroke(255);
+ 
   p5Canvas.parent("#p5-canvas");
   myName = select("#my-name");
-  myName.html("Karell"); // enter your name here!
-  noLoop();
+  myName.html("[Karell]");
 }
 
- /*
-  full reference: https://p5js.org/reference/
-  line: https://p5js.org/reference/#/p5/line
-  rectangle: https://p5js.org/reference/#/p5/rect
-  ellipse: https://p5js.org/reference/#/p5/ellipse
-  arc: https://p5js.org/reference/#/p5/arc
-  background color: https://p5js.org/reference/#/p5/background
-  shape color: https://p5js.org/reference/#/p5/fill
-  line color, weight, etc: https://p5js.org/reference/#/p5/stroke
- */
 
-// Write all your code inside the draw() function below!
 function draw() {
-  // Example. You can remove when you're ready!
-  background(25, 50, 255); // try changing this to a blue background
-  fill(255, 204, 0);    // Always call fill() before the shape you want to fill in.
-  rect(130, 120, 155, 100); // Draw a 30x20 pixel rectangle at coordinate (55,55)
-  triangle(30,75,58,20,86,75);
-  line(30, 20, 85, 20);
-stroke(126);
-line(85, 20, 85, 75);
-stroke(255);
-line(85, 75, 30, 75);
-line(30, 20, 85, 75);
-quad(38, 31, 86, 20, 69, 63, 30, 76);
-console.log("I am below line function");
+  background(0, 255, 0);
+  fill(0, 12);
+  rect(0, 0, width, height);
+  fill(255);
+  noStroke();
+  ellipse(mouseX, mouseY, 60, 60);
+
+  pg.background(51); 
+  pg.noFill();
+  pg.stroke(255);
+  pg.ellipse(mouseX-150, mouseY-75, 60, 60);
+
+ image(pg, 150, 75);
+
+ a = a + 0.04;
+  s = cos(a)*2;
+
+  translate(width/2, height/2);
+  scale(s); 
+  fill("blue");
+  rect(0, 0, 50, 50); 
+  
+
+  translate(75, 0);
+  fill(225);
+  scale(s);
+  rect(0, 0, 50, 50); 
+
+  function drawTriangle(){
+  	triangle(50, 60, 50, 60, 70, 50);
+  }
+
+  if (mousePressed == true) {
+  	drawTriangle();
+
+  }
+
+
+ 
+
+
 }
+
+
+
+// create an animation function below, then call it in draw()
+// see example.js if you need a place to start!
+// when you're ready, be sure to change index.html to link to this script instead of example.js

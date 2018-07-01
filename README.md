@@ -1,2 +1,1 @@
-# Karell-s-SMASH-drawing-project
-a drawing project
+# smash-cs2-animation-project
